@@ -1,5 +1,6 @@
-// src/components/Contact.js
-import { useState } from 'react';
+
+
+import React, { useState } from 'react';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -45,9 +46,9 @@ const Contact = () => {
                         id="email"
                         name="email"
                         value={formData.email}
-                        onChange={(e) => handleChange(e) }
-                    className="w-full p-2 border rounded-md"
-                    required
+                        onChange={(e) => handleChange(e)}
+                        className="w-full p-2 border rounded-md"
+                        required
                     />
                 </div>
                 <div className="mb-4">
@@ -55,12 +56,13 @@ const Contact = () => {
                         Message
                     </label>
                     <textarea
+                        
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={(e) => handleChange(e)}
                         rows={4}
-                        className="w-full p-2 border rounded-md"
+                        className=" resize-none w-full p-2 border rounded-md"
                         required
                     />
                 </div>

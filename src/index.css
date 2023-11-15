@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.setBackground {
+    background-image: url("./assets/photo.png");
+    background-size: contain;
+    background-repeat: no-repeat no-repeat;
+
+}
