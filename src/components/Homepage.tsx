@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import React from "react";
 import photo from "../assets/photo.png";
 import { TypeAnimation } from 'react-type-animation';
 
 function Body() {
     return (
-        <div className="items-center flex justify-around  text-center bg-whited">
+        <div className="items-center mb-5 sm:min-h-[100vh] sm:flex justify-around  text-center bg-whited">
             <div className="flex flex-col items-center mb-6">
                 <img
-                    className="h-[27rem] rounded-[50rem] mb-5 "
+                    className="sm:h-[27rem] h-[10rem] rounded-[50rem] mb-5 "
                     src={photo}
                     alt="Profile"
                 />
@@ -29,7 +28,7 @@ function Body() {
                     />
                 </h1>
             </div>
-            <div className="text-left">
+            <div className="sm:text-left">
                 <div className="text-[3rem]">Hey,</div>
                 <div className="text-[3rem]">This is <span className="text-orange-500 ">Sahith</span></div>
                 <div className="text-[3rem]">Into Tech? </div>

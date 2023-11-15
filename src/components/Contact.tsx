@@ -20,7 +20,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="container mx-auto p-4 flex flex-col justify-center items-center">
+        <div className="container mx-auto my-5 flex flex-col justify-center items-center">
             <h1 className="text-3xl font-semibold mb-4">Contact Me</h1>
             <form onSubmit={(e) => handleSubmit(e)} className="max-w-md">
                 <div className="mb-4">
@@ -62,7 +62,7 @@ const Contact = () => {
                         value={formData.message}
                         onChange={(e) => handleChange(e)}
                         rows={4}
-                        className=" resize-none w-full p-2 border rounded-md"
+                        className="resize-none w-full p-2 border rounded-md"
                         required
                     />
                 </div>

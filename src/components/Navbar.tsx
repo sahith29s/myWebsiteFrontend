@@ -1,5 +1,4 @@
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ const Navbar = () => {
                 {/* Right side of the navbar (Nav links and logos) */}
                 <div className="flex items-center justify-center">
  
-                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/home">Home</Link>
+                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/">Home</Link>
                     <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/aboutme">About</Link>
                     <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/contact">Contact</Link>
                     
