@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .setBackground {
     background-image: url("./assets/photo.png");
     background-size: contain;
     background-repeat: no-repeat no-repeat;
+}
 
+.font-amita {
+    /* font-family: 'Akaya Kanadaka'; */
+    font-family: 'Amita';
 }

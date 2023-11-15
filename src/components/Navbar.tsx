@@ -10,14 +10,14 @@ const Navbar = () => {
                 <div className="flex items-center justify-center">
                     <Link  className='flex justify-center items-center' to="/">
                         <img  src="https://img.freepik.com/free-vector/colorful-letter-s-with-black-background_483537-4543.jpg" alt="Logo" className="h-8 duration-150 hover:scale-125 mr-2 rounded-3xl" />
-                        <span className="text-white text-lg font-semibold hover:text-purple-500 duration-150">Sahith</span>
+                        <span className="text-white text-2xl font-semibold hover:text-purple-500 duration-150"> <span className="text-green-400 text-3xl" >S</span>ahith</span>
                     </Link>
                 </div>
 
                 {/* Right side of the navbar (Nav links and logos) */}
                 <div className="flex items-center justify-center">
  
-                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/">Home</Link>
+                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400  " to="/">Home</Link>
                     <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/aboutme">About</Link>
                     <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/contact">Contact</Link>
                     
