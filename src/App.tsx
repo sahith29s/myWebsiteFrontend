@@ -3,6 +3,7 @@ import Contact from "./components/Contact"
 import Navbar from "./components/Navbar"
 import Homepage from "./components/Homepage"
 import Footer from "./components/Footer"
+import AboutUs from "./components/About"
 
 const App = () => {
   return (
@@ -12,6 +13,8 @@ const App = () => {
       <Routes>
         <Route path="/contact" element={<Contact />} />
         <Route path="/" element={<Homepage/>} />
+        <Route path="/about" element={<AboutUs/>} />
+
       </Routes>
       <Footer/>
 
