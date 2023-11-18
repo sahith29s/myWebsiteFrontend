@@ -27,7 +27,7 @@ const Footer = () => {
                     </div>
 
                     <div className="w-2/3">
-                        <ul className="sm:flex justify-end space-x-8">
+                        <ul className="flex justify-end space-x-8">
                             <li>
                                 <Link to="/" className="hover:text-gray-400">
                                     Home

@@ -13,3 +13,20 @@
     /* font-family: 'Akaya Kanadaka'; */
     font-family: 'Amita';
 }
+
+.leftBox {
+    @apply float-left clear-both max-w-[40%] bg-gray-500 shadow-2xl rounded-xl px-3 my-[.15rem]
+}
+
+.rightBox {
+    @apply float-right clear-both max-w-[40%] bg-green-500 shadow-2xl rounded-xl px-3 my-[.15rem]
+}
+
+.name {
+    @apply text-orange-400
+}
+
+.message {
+    @apply text-white
+}
+
