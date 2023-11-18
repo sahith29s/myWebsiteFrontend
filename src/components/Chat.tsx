@@ -1,7 +1,7 @@
 // import { io } from "socket.io-client"
 // src/Chat.js
 import { useEffect, useState } from 'react';
-// const socket = io("http://localhost:3000")
+// const socket = io("http://localhost:3000")a
 
 interface messageInterface {
   you: boolean,
