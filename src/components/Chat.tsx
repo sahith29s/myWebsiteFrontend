@@ -1,4 +1,4 @@
-import { io } from "socket.io-client"
+// import { io } from "socket.io-client"
 // src/Chat.js
 import { useEffect, useState } from 'react';
 // const socket = io("http://localhost:3000")
@@ -28,7 +28,7 @@ const Chat = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
+    return;
   };
 
 
