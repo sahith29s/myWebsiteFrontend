@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import photo from "../assets/photo.png";
 import { TypeAnimation } from 'react-type-animation';
 import Dropdown from "./Dropdown";

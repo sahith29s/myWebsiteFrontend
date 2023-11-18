@@ -1,7 +1,6 @@
 // import { io } from "socket.io-client"
 // src/Chat.js
-import { useEffect, useState } from 'react';
-// const socket = io("http://localhost:3000")a
+import { useState } from 'react';
 
 interface messageInterface {
   you: boolean,
@@ -10,9 +9,9 @@ interface messageInterface {
 }
 
 const Chat = () => {
-  
 
-  let name: string | null;
+
+
 
   const [oneMessage, setOneMessage] = useState<string>("");
 
@@ -28,6 +27,16 @@ const Chat = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
+    setMessages([
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+      { you: true, message: "man" }, { you: false, message: "cat", name: "balu" },
+    ]);
     return;
   };
 
