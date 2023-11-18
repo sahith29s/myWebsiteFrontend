@@ -11,6 +11,7 @@ interface messageInterface {
 
 const Chat = () => {
   
+
   let name: string | null;
 
   const [oneMessage, setOneMessage] = useState<string>("");
@@ -33,7 +34,7 @@ const Chat = () => {
 
   return (
     <>
-      <div className="bg-yellow-600 font-amita text-3xl text-center h-[4rem] flex justify-center items-center">Chat app</div>
+      <div className="bg-yellow-600 font-amita text-3xl text-center h-[4rem] flex justify-center items-center">Chat app <span className="text-sm relative top-3">still under construction</span></div>
 
       <main className="sm:h-[73vh] h-[45vh] container mx-auto py-5">
 

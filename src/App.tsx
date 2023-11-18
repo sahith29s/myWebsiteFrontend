@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage"
 import Footer from "./components/Footer"
 import AboutUs from "./components/About"
 import Chat from "./components/Chat"
+import Pagenotfound from "./components/Pagenotfound"
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/contact" element={<Contact />} />
         <Route path="/" element={<Homepage />} />
+        <Route path="*" element={<Pagenotfound />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>

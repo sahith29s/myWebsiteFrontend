@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import photo from "../assets/photo.png";
 import { TypeAnimation } from 'react-type-animation';
+import Dropdown from "./Dropdown";
 
 function Homepage() {
     return (
@@ -31,7 +32,14 @@ function Homepage() {
                 <div className="text-[3rem] font-amita">Hey,</div>
                 <div className="text-[3rem] font-amita">This is <span className="text-orange-500 ">Sahith</span></div>
                 <div className="text-[3rem] font-amita">Into Tech? </div>
-                <Link  to="/contact" type="button" className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 font-amita mt-5 mb-2">Contact</Link>
+
+                {/* <Link to="/contact" type="button" className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 font-amita mt-5 mb-2">
+                    Apps that I made
+
+                </Link> */}
+
+                <Dropdown/>
+                
             </div>
         </div>
     );
