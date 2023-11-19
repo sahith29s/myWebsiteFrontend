@@ -13,7 +13,7 @@ const Navbar = () => {
                         <img src="https://img.freepik.com/free-vector/colorful-letter-s-with-black-background_483537-4543.jpg" alt="Logo" className="h-8 duration-150 hover:scale-125 mr-2 rounded-3xl" />
                         <span className="text-white text-2xl font-semibold hover:text-purple-500 duration-150"> <span className="text-green-400 text-3xl font-serif font-extrabold" >S</span>ahith</span>
                     </Link>
-                </div>
+                </div> 
 
                 {/* Right side of the navbar (Nav links and logos) */}
                 <div className="flex items-center justify-center gap-4">
