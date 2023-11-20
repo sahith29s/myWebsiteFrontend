@@ -6,11 +6,12 @@ import Footer from "./components/Footer"
 import AboutUs from "./components/About"
 import Chat from "./components/Chat"
 import Pagenotfound from "./components/Pagenotfound"
+import Signup from "./components/Signup"
 
 const App = () => {
   return (
     <>
-      <div className="bg-red-700 flex items-center text-center text-white font-xl h-9 justify-center">Website undertaker construction</div>
+      <div className="bg-red-700 flex items-center text-center text-white font-xl h-9 justify-center">Website under construction</div>
       <Navbar />
       <Routes>
         <Route path="/contact" element={<Contact />} />
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="*" element={<Pagenotfound />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
 
