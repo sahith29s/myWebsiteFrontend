@@ -1,40 +1,215 @@
-import { useState } from "react"
+import { baseUrl } from "../backendBaseUrl"
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    InputGroup,
+    InputRightElement,
+    Stack,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+    Link,
+    useToast,
+} from "@chakra-ui/react"
 
+import { useEffect, useState } from "react"
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
+import { useNavigate } from "react-router-dom"
 
-const photo = () => {
-    const [inputTagImage, setInputTagImage] = useState<File | null>(null);
-    const [profilePicture, setProfilePicture] = useState<string>("");
+const Signup = () => {
+    useEffect(() => {
+        if (localStorage.getItem("isSignup")) {
+            history("/login")
+        }
+    }, [])
 
-    const handleClick = (e: any) => {
+    const history = useNavigate();
 
-        const files = e.target.files;
-        setInputTagImage(files[0]);
+    interface formDataInterface {
+        username: string,
+        email: string,
+        password: string
+        profile: string
+    }
+
+    const normalData = {
+        username: "",
+        email: "",
+        password: "",
+        profile: ""
+    }
+
+    const [formData, setformData] = useState<formDataInterface>(normalData);
+    const handleFormInput = (e: any) => {
+        console.log(e.target.name);
+        setformData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = () => {
+    const toast = useToast()
+    const [showPassword, setShowPassword] = useState(false)
+    const [inputTagImage, setInputTagImage] = useState<File | null>(null);
+
+    const handleToSetImage = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        const files = (e.target as HTMLInputElement).files;
+        if (files) {
+            setInputTagImage(files[0]);
+        }
+    };
+
+    const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(inputTagImage);
+
         if (inputTagImage && (inputTagImage.type === "image/jpeg" || inputTagImage.type === "image/png")) {
+            console.log("sahith");
             const formDataVar = new FormData()
             formDataVar.append("file", inputTagImage)
             formDataVar.append("upload_preset", "deployWebsite")
             formDataVar.append("cloud_name", "dpm6uveua")
-            fetch("https://api.cloudinary.com/v1_1/dpm6uveua/image/upload", {
+            let cloudinaryFetch = await fetch("https://api.cloudinary.com/v1_1/dpm6uveua/image/upload", {
                 method: "post",
                 body: formDataVar
-            }).then((res) => res.json()).then((data) => {
-                setProfilePicture(data.url)
+            })
+            // .then((res) => res.json()).then((data) => {
+            //     console.log(data.url);
+            //     setformData({ ...formData, profile: data.url })
+            // })
+            cloudinaryFetch = await cloudinaryFetch.json()
+            console.log(cloudinaryFetch.url);
+            setformData({ ...formData, profile: cloudinaryFetch.url });
+        }
+
+
+        const { username, email, password } = formData;
+        if (!username || !email || !password) {
+            toast({
+                title: "Credentials",
+                description: "Enter all the credentials first",
+                status: "warning",
+                position: "bottom-left",
+                duration: 9000,
+                isClosable: true,
+            })
+            return;
+        }
+
+        let response = await fetch((baseUrl + "api/user/register"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify(formData),
+        });
+
+        // console.log(response.status);
+        if (response.status === 201) {
+            let data = await response.json();
+            console.log(data);
+            toast({
+                title: "Account created.",
+                description: "We've created your account for you.",
+                status: "success",
+                position: "bottom-left",
+                duration: 9000,
+                isClosable: true,
+            })
+            localStorage.setItem("isSignup", "true")
+            setformData(normalData)
+            history("/login")
+            return
+        }
+
+        else {
+            toast({
+                title: "Account not created.",
+                description: "Some error is the server",
+                status: "error",
+                position: "bottom-left",
+                duration: 9000,
+                isClosable: true,
             })
         }
     };
 
-
     return (
+
         <>
-            <input type="file" onChange={(e) => handleClick(e)} />
-            <div></div>
-            <button onClick={handleSubmit}>submit</button>
-            {profilePicture}
+            <Flex
+                minH={"100vh"}
+                align={"center"}
+                justify={"center"}
+                bg={useColorModeValue("gray.50", "gray.800")}>
+                <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                    <Stack align={"center"}>
+                        <Heading fontSize={"4xl"} textAlign={"center"}>
+                            Sign up
+                        </Heading>
+                    </Stack>
+
+                    <Box
+                        rounded={"lg"}
+                        bg={useColorModeValue("white", "gray.700")}
+                        boxShadow={"lg"}
+                        p={8}>
+                        <Stack spacing={4}>
+                            <form onSubmit={submitForm}>
+                                <FormControl id="username" isRequired>
+                                    <FormLabel>username</FormLabel>
+                                    <Input name="username" value={formData.username} onChange={(e) => handleFormInput(e)} type="message" />
+                                </FormControl>
+
+                                <FormControl id="email" isRequired>
+                                    <FormLabel>Email address</FormLabel>
+                                    <Input name="email" value={formData.email} onChange={(e) => handleFormInput(e)} type="email" />
+                                </FormControl>
+
+                                <FormControl id="profile" isRequired>
+                                    <FormLabel>Profile Picture <span className="text-red-500">optional</span></FormLabel>
+                                    <Input name="profile" className="p-1" onClick={(e) => handleToSetImage(e)} type="file" />
+                                </FormControl>
+
+                                <FormControl id="password" isRequired>
+                                    <FormLabel>Password</FormLabel>
+                                    <InputGroup>
+                                        <Input name="password" value={formData.password} onChange={(e) => handleFormInput(e)} type={showPassword ? "text" : "password"} />
+                                        <InputRightElement h={"full"}>
+                                            <Button
+                                                variant={"ghost"}
+                                                onClick={() => setShowPassword((showPassword) => !showPassword)}>
+                                                {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
+                                </FormControl>
+                                <Stack spacing={10} pt={2}>
+                                    <Button
+                                        // onClick={submitForm}
+                                        loadingText="Submitting"
+                                        size="lg"
+                                        bg={"blue.400"}
+                                        color={"white"}
+                                        _hover={{
+                                            bg: "blue.500",
+                                        }}>
+                                        Sign up
+                                    </Button>
+                                </Stack>
+                            </form>
+
+
+                            <Stack pt={6}>
+                                <Text align={"center"}>
+                                    Already a user? <Link color={"blue.400"}>Login</Link>
+                                </Text>
+                            </Stack>
+                        </Stack>
+                    </Box>
+                </Stack>
+            </Flex>
         </>
     )
 }
 
-export default photo
+export default Signup

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav className="bg-gray-800 p-4 sticky top-0">
+        <nav className="bg-gray-800 z-10 p-4 sticky top-0">
             <div className="container mx-auto sm:flex justify-between items-center">
                 {/* Left side of the navbar (Brand/logo) */}
                 <div className="flex items-center justify-center">
