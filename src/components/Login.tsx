@@ -1,20 +1,81 @@
-import { Link } from 'react-router-dom'
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    Checkbox,
+    Stack,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+} from "@chakra-ui/react"
+import { useState } from "react"
 
-const Login = () => {
+export default function SimpleCard() {
+    interface formDataInterface {
+        email: string,
+        password: string
+    }
+
+    const defaultFormData = {
+        email: "",
+        password: ""
+
+    }
+
+    const [formData, setFormData] = useState<formDataInterface>(defaultFormData);
+
+    const handleInputChange = (e :  React.ChangeEvent<HTMLInputElement>
+    ) =>{
+        setFormData({...formData , [e.target.name] : e.target.value })
+    };
+
     return (
-        <div className="flex items-center justify-center h-[40vh] sm:h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-            <div className="text-center text-white">
-                <h1 className="text-5xl font-bold mb-4">Login page still under construction</h1>
-                <p className="text-lg mb-8">
-                    Oops! The page you are looking for might be in another castle.
-                </p>
-                <p className="text-lg mb-8">
-                    Go back to <Link to="/" className="underline">the home page</Link>.
-                </p>
-            </div>
-        </div>
-
+        <Flex
+            minH={"100vh"}
+            align={"center"}
+            justify={"center"}
+            bg={useColorModeValue("gray.50", "gray.800")}>
+            <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                <Stack align={"center"}>
+                    <Heading fontSize={"4xl"}>Login to your account</Heading>
+                </Stack>
+                <Box
+                    rounded={"lg"}
+                    bg={useColorModeValue("white", "gray.700")}
+                    boxShadow={"lg"}
+                    p={8}>
+                    <Stack spacing={4}>
+                        <FormControl id="email">
+                            <FormLabel>Email address</FormLabel>
+                            <Input name="email" value={formData.email} onChange={handleInputChange} type="email" />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Password</FormLabel>
+                            <Input name="password" onChange={(e) => handleInputChange(e)} value={formData.password} type="password" />
+                        </FormControl>
+                        <Stack spacing={10}>
+                            <Stack
+                                direction={{ base: "column", sm: "row" }}
+                                align={"start"}
+                                justify={"space-between"}>
+                                <Checkbox>Remember me</Checkbox>
+                                <Text color={"blue.400"}>Forgot password?</Text>
+                            </Stack>
+                            <Button
+                                bg={"blue.400"}
+                                color={"white"}
+                                _hover={{
+                                    bg: "blue.500",
+                                }}>
+                                Sign in
+                            </Button>
+                        </Stack>
+                    </Stack>
+                </Box>
+            </Stack>
+        </Flex>
     )
 }
-
-export default Login

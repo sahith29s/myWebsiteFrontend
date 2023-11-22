@@ -36,14 +36,14 @@ const Signup = () => {
         profile: string
     }
 
-    const normalData = {
+    const defaultFormData = {
         username: "",
         email: "",
         password: "",
         profile: ""
     }
 
-    const [formData, setformData] = useState<formDataInterface>(normalData);
+    const [formData, setformData] = useState<formDataInterface>(defaultFormData);
     const handleFormInput = (e: any) => {
         console.log(e.target.name);
         setformData({ ...formData, [e.target.name]: e.target.value });
@@ -116,7 +116,7 @@ const Signup = () => {
                 isClosable: true,
             })
             localStorage.setItem("isSignup", "true")
-            setformData(normalData)
+            setformData(defaultFormData)
             history("/login")
             return
         }

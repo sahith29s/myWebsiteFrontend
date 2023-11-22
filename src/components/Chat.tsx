@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import PopupForName from './PopupForName';
 
 // const socket = io("http://localhost:3000");
-const socket = io("https://hakur.onrender.com/"); 
+const socket = io("https://hakur.onrender.com/");
 
 type messageInterface = {
   you: boolean,
@@ -21,25 +21,25 @@ const Chat = () => {
   const [name, setName] = useState<string>("");;
   const [oneMessage, setOneMessage] = useState<string>("");
 
-  useEffect(() => {
+  useEffect((): void => {
 
     socket.on("messageBackFromServer", (messObj) => {
       setMessages((prevMess) => [...prevMess, messObj])
     })
-
-
   }, [])
 
 
   const [messages, setMessages] = useState<messageInterface[]>([]);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: any): void => {
     e.preventDefault();
-
+    if (oneMessage == " " || oneMessage == "") {
+      setOneMessage("");
+      return;
+    }
     setMessages([...messages, { you: true, message: oneMessage }]);
     socket.emit("message", { name: name, you: false, message: oneMessage })
     setOneMessage("");
-    // setMessages([...messages,])
     return;
   };
 
@@ -51,7 +51,6 @@ const Chat = () => {
           <PopupForName setName={setName} />
         </>
       }
-
       {
         name &&
         <>
@@ -78,7 +77,6 @@ const Chat = () => {
 
               }
             </div>
-
             <form onSubmit={handleSubmit} className="flex items-center relative clear-both top-[1.5rem] border-gray-200 py-2 px-4">
               <div className="relative flex-1">
                 <input
@@ -87,7 +85,11 @@ const Chat = () => {
                   className="w-full border-none outline-none p-3 text-white bg-gray-800 rounded-l-md transition-all duration-300 focus:ring focus:ring-blue-300"
 
                   value={oneMessage}
-                  onChange={(e) => setOneMessage(e.target.value)}
+                  onChange={(e) => {
+                    const newValue = e.target.value.replace(/ +/g, ' ');
+                    setOneMessage(newValue)
+
+                  }}
                 />
                 <button
                   type="submit"
