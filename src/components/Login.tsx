@@ -48,6 +48,7 @@ export default function SimpleCard() {
     const [formData, setFormData] = useState<formDataInterface>(defaultFormData);
 
     const submitForm = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
         let response = await fetch((baseUrl + "api/user/login"), {
             method: "POST",
             headers: { "Content-Type": "application/json", },
