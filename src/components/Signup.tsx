@@ -21,6 +21,13 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
 import { useNavigate } from "react-router-dom"
 
 const Signup = () => {
+
+    const validateEmail = (email: string) => {
+        const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        return pattern.test(email);
+    }
+
+
     useEffect(() => {
         if (localStorage.getItem("isSignup")) {
             history("/login")
@@ -60,7 +67,19 @@ const Signup = () => {
         }
     };
 
-    const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    const submitForm = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        if (!validateEmail(formData.email)) {
+            toast({
+                title: "Email",
+                description: "Enter a valid email",
+                status: "warning",
+                position: "bottom-left",
+                duration: 9000,
+                isClosable: true,
+            })
+            return;
+        }
+
         e.preventDefault();
         console.log(inputTagImage);
 
@@ -102,6 +121,7 @@ const Signup = () => {
             headers: { "Content-Type": "application/json", },
             body: JSON.stringify(formData),
         });
+        setformData(defaultFormData);
 
         // console.log(response.status);
         if (response.status === 201) {
@@ -116,7 +136,6 @@ const Signup = () => {
                 isClosable: true,
             })
             localStorage.setItem("isSignup", "true")
-            setformData(defaultFormData)
             history("/login")
             return
         }
@@ -154,7 +173,7 @@ const Signup = () => {
                         boxShadow={"lg"}
                         p={8}>
                         <Stack spacing={4}>
-                            <form onSubmit={submitForm}>
+                            <form >
                                 <FormControl id="username" isRequired>
                                     <FormLabel>username</FormLabel>
                                     <Input name="username" value={formData.username} onChange={(e) => handleFormInput(e)} type="message" />
@@ -185,7 +204,7 @@ const Signup = () => {
                                 </FormControl>
                                 <Stack spacing={10} pt={2}>
                                     <Button
-                                        // onClick={submitForm}
+                                        onClick={(e) => submitForm(e)}
                                         loadingText="Submitting"
                                         size="lg"
                                         bg={"blue.400"}

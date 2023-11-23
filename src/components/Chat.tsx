@@ -1,6 +1,8 @@
 import { io } from "socket.io-client"
 import { useEffect, useState } from 'react';
 import PopupForName from './PopupForName';
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 // const socket = io("http://localhost:3000");
 const socket = io("https://hakur.onrender.com/");
@@ -14,11 +16,28 @@ type messageInterface = {
 
 const Chat = () => {
 
+  const toast = useToast();
+  const history = useNavigate();
+
   useEffect(() => {
-    setName(localStorage.getItem("name") as string)
+    if (localStorage.getItem("formData")) {
+      setName(JSON.parse(localStorage.getItem("formData") as string)[0].username);
+    }
+    else {
+      toast({
+        title: "Login Required",
+        description: "Login first to access chat",
+        status: "success",
+        position: "bottom-left",
+        duration: 9000,
+        isClosable: true,
+      })
+      history("/login");
+    }
+
   }, [])
 
-  const [name, setName] = useState<string>("");;
+  const [name, setName] = useState<string>("");
   const [oneMessage, setOneMessage] = useState<string>("");
 
   useEffect((): void => {
@@ -27,7 +46,6 @@ const Chat = () => {
       setMessages((prevMess) => [...prevMess, messObj])
     })
   }, [])
-
 
   const [messages, setMessages] = useState<messageInterface[]>([]);
 
