@@ -63,11 +63,13 @@ const Signup = () => {
     const handleToSetImage = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
         const files = (e.target as HTMLInputElement).files;
         if (files) {
+            console.log(files[0])
             setInputTagImage(files[0]);
         }
     };
 
     const submitForm = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        let profileString: string = "";
         if (!validateEmail(formData.email)) {
             toast({
                 title: "Email",
@@ -93,15 +95,9 @@ const Signup = () => {
                 method: "post",
                 body: formDataVar
             })
-            // .then((res) => res.json()).then((data) => {
-            //     console.log(data.url);
-            //     setformData({ ...formData, profile: data.url })
-            // })
-            cloudinaryFetch = await cloudinaryFetch.json()
-            console.log(cloudinaryFetch.url);
-            setformData({ ...formData, profile: cloudinaryFetch.url });
+            cloudinaryFetch = await cloudinaryFetch.json();
+            profileString = cloudinaryFetch.url;
         }
-
 
         const { username, email, password } = formData;
         if (!username || !email || !password) {
@@ -119,17 +115,13 @@ const Signup = () => {
         let response = await fetch((baseUrl + "api/user/register"), {
             method: "POST",
             headers: { "Content-Type": "application/json", },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({...formData , profile : profileString}),
         });
-        setformData(defaultFormData);
 
-        // console.log(response.status);
         if (response.status === 201) {
-            let data = await response.json();
-            console.log(data);
             toast({
                 title: "Account created.",
-                description: "We've created your account for you.",
+                description: "Your account has been created",
                 status: "success",
                 position: "bottom-left",
                 duration: 9000,
@@ -140,10 +132,10 @@ const Signup = () => {
             return
         }
 
-        else {
+        else if (response.status == 409) {
             toast({
                 title: "Account not created.",
-                description: "Some error is the server",
+                description: "User already exists",
                 status: "error",
                 position: "bottom-left",
                 duration: 9000,
