@@ -60,8 +60,19 @@ const Signup = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [inputTagImage, setInputTagImage] = useState<File | null>(null);
 
-    const handleToSetImage = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    const handleToSetImage = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = (e.target as HTMLInputElement).files;
+        // files && console.log(files[0].type);
+        if (files && files[0].type != "image/jpeg" && files[0].type != "image/png") {
+            toast({
+                title: "photo",
+                description: "Only png and jpeg files are allowed",
+                status: "warning",
+                position: "bottom-left",
+                duration: 3000,
+                isClosable: true,
+            })
+        }
         if (files) {
             console.log(files[0])
             setInputTagImage(files[0]);
@@ -115,7 +126,7 @@ const Signup = () => {
         let response = await fetch((baseUrl + "api/user/register"), {
             method: "POST",
             headers: { "Content-Type": "application/json", },
-            body: JSON.stringify({...formData , profile : profileString}),
+            body: JSON.stringify({ ...formData, profile: profileString }),
         });
 
         if (response.status === 201) {
@@ -178,7 +189,7 @@ const Signup = () => {
 
                                 <FormControl id="profile" isRequired>
                                     <FormLabel>Profile Picture <span className="text-red-500">optional</span></FormLabel>
-                                    <Input name="profile" className="p-1" onClick={(e) => handleToSetImage(e)} type="file" />
+                                    <Input placeItems="bot" name="profile" className="p-1" onChange={(e) => handleToSetImage(e)} type="file" />
                                 </FormControl>
 
                                 <FormControl id="password" isRequired>
