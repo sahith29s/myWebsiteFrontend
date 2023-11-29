@@ -46,15 +46,18 @@ export default function SimpleCard() {
 
     const history = useNavigate();
     const [formData, setFormData] = useState<formDataInterface>(defaultFormData);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const submitForm = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitForm = async (e: any) => {
+        setIsLoading(true);
         e.preventDefault();
         let response = await fetch((baseUrl + "api/user/login"), {
             method: "POST",
             headers: { "Content-Type": "application/json", },
             body: JSON.stringify(formData),
         });
-        setFormData(defaultFormData);
+
+        setIsLoading(false);
 
         if (response.status == 200) {
             toast({
@@ -93,7 +96,6 @@ export default function SimpleCard() {
             })
             return;
         }
-
     };
 
     // let response = await fetch((baseUrl + "api/user/register"), {
@@ -142,6 +144,7 @@ export default function SimpleCard() {
                             <Button
                                 bg={"blue.400"}
                                 onClick={(e) => submitForm(e)}
+                                isLoading={isLoading}
                                 color={"white"}
                                 _hover={{
                                     bg: "blue.500",

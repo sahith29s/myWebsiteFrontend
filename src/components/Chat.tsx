@@ -86,8 +86,11 @@ const Chat = () => {
                   return (
                     <div key={index} className={messObj.you ? "rightBox" : "leftBox"}>
                       {
-                        messObj.name ? <h3 className="name">{messObj.name}</h3> : ""
+                        (index >= 1) ?
+                          (messages[index - 1].name != messObj.name) ? <h3 className="name">{messObj.name}</h3> : ""
+                          : <h3 className="name">{messObj.name}</h3>
                       }
+
                       <p className="message">{messObj.message}</p>
                     </div>
                   )

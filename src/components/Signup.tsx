@@ -57,7 +57,8 @@ const Signup = () => {
     };
 
     const toast = useToast()
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [inputTagImage, setInputTagImage] = useState<File | null>(null);
 
     const handleToSetImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +80,7 @@ const Signup = () => {
         }
     };
 
-    const submitForm = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const submitForm = async (e: any) => {
         let profileString: string = "";
         if (!validateEmail(formData.email)) {
             toast({
@@ -92,6 +93,7 @@ const Signup = () => {
             })
             return;
         }
+        setIsLoading(true);
 
         e.preventDefault();
         console.log(inputTagImage);
@@ -129,6 +131,8 @@ const Signup = () => {
             body: JSON.stringify({ ...formData, profile: profileString }),
         });
 
+        setIsLoading(false);
+
         if (response.status === 201) {
             toast({
                 title: "Account created.",
@@ -153,6 +157,7 @@ const Signup = () => {
                 isClosable: true,
             })
         }
+
     };
 
     return (
@@ -208,7 +213,8 @@ const Signup = () => {
                                 <Stack spacing={10} pt={2}>
                                     <Button
                                         onClick={(e) => submitForm(e)}
-                                        loadingText="Submitting"
+                                        isLoading={isLoading}
+                                        loadingText="submitForm"
                                         size="lg"
                                         bg={"blue.400"}
                                         color={"white"}
