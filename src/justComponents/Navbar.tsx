@@ -18,16 +18,38 @@ const Navbar = () => {
                 {/* Right side of the navbar (Nav links and logos) */}
                 <div className="flex items-center justify-center gap-4">
 
-                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400  " to="/">Home</Link>
+                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400" to="/">Home</Link>
 
-                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/about">About</Link>
+                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400" to="/about">About</Link>
 
-                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/contact">Contact</Link>
+                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400" to="/contact">Contact</Link>
 
-                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/signup">Sign Up</Link>
+                    <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 whitespace-nowrap" to="/signup">Sign Up</Link>
 
                     <Link className="text-white mr-4 hover:scale-90 duration-200 hover:text-green-400 " to="/login">Login</Link>
 
+                    <div className='sm:flex hidden gap-2'>
+                        <Link to="https://github.com/sahith29s" target='_sahith'>
+                            <FontAwesomeIcon icon={faGithub} color='white' className="h-5 hover:opacity-70 duration-150 hover:scale-90" />
+                        </Link>
+
+                        <Link to="/">
+                            <FontAwesomeIcon icon={faLinkedin} color='white' className="h-5 hover:opacity-70 duration-150 hover:scale-90" />
+                        </Link>
+
+                        <Link to="/">
+                            <FontAwesomeIcon icon={faDiscord} color="white" className="h-5 hover:opacity-70 duration-150 hover:scale-90" />
+                        </Link>
+
+                        <Link target="_sahith" to="https://www.chess.com/member/itsmesahith">
+                            <FontAwesomeIcon icon={faChessQueen} color="white" className="h-5 hover:opacity-70 duration-150 hover:scale-90" />
+                        </Link>
+                    </div>
+
+                </div>
+                
+                {/* In mobile phones */}
+                <div className='flex sm:hidden justify-center gap-6'>
                     <Link to="https://github.com/sahith29s" target='_sahith'>
                         <FontAwesomeIcon icon={faGithub} color='white' className="h-5 hover:opacity-70 duration-150 hover:scale-90" />
                     </Link>
@@ -43,8 +65,8 @@ const Navbar = () => {
                     <Link target="_sahith" to="https://www.chess.com/member/itsmesahith">
                         <FontAwesomeIcon icon={faChessQueen} color="white" className="h-5 hover:opacity-70 duration-150 hover:scale-90" />
                     </Link>
-
                 </div>
+
             </div>
 
         </nav>

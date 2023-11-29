@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom"
-import Contact from "./components/Contact"
-import Navbar from "./components/Navbar"
-import Homepage from "./components/Homepage"
-import Footer from "./components/Footer"
-import AboutUs from "./components/About"
-import Chat from "./components/Chat"
-import Pagenotfound from "./components/Pagenotfound"
-import Signup from "./components/Signup"
-import Login from "./components/Login"
+import Contact from "./components/pages/Contact"
+import Navbar from "./justComponents/Navbar"
+import Homepage from "./components/pages/Homepage"
+import Footer from "./justComponents/Footer"
+import AboutUs from "./components/pages/About"
+import Chat from "./components/pages/Chat"
+import Pagenotfound from "./components/pages/Pagenotfound"
+import Signup from "./auth/Signup"
+import Login from "./auth/Login"
 
 const App = () => {
   return (

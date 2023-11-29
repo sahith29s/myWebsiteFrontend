@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
 import { useEffect, useState } from 'react';
-import PopupForName from './PopupForName';
+import PopupForName from '../PopupForName';
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 

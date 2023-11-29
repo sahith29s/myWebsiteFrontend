@@ -1,6 +1,6 @@
-import photo from "../assets/photo.png";
+import Dropdown from "../../justComponents/Dropdown";
+import photo from "../../assets/photo.png";
 import { TypeAnimation } from 'react-type-animation';
-import Dropdown from "./Dropdown";
 
 function Homepage() {
     return (
@@ -31,9 +31,9 @@ function Homepage() {
                 <div className="text-[3rem] font-amita">Hey,</div>
                 <div className="text-[3rem] font-amita">This is <span className="text-orange-500 ">Sahith</span></div>
                 <div className="text-[3rem] font-amita">Into Tech? </div>
-                <Dropdown/>
+                <Dropdown />
             </div>
-            
+
         </div>
     );
 }
