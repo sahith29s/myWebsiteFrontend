@@ -1,4 +1,4 @@
-import { baseUrl } from "../backendBaseUrl"
+import { baseUrl } from "../../backendBaseUrl";
 import {
     Flex,
     Box,
@@ -88,7 +88,7 @@ const Signup = () => {
                 description: "Enter a valid email",
                 status: "warning",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             return;
@@ -119,7 +119,7 @@ const Signup = () => {
                 description: "Enter all the credentials first",
                 status: "warning",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             return;
@@ -139,7 +139,7 @@ const Signup = () => {
                 description: "Your account has been created",
                 status: "success",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             localStorage.setItem("isSignup", "true")
@@ -153,7 +153,7 @@ const Signup = () => {
                 description: "User already exists",
                 status: "error",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
         }

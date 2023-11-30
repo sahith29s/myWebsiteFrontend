@@ -1,3 +1,4 @@
+import { baseUrl } from "../../backendBaseUrl";
 import {
     Flex,
     Box,
@@ -13,7 +14,6 @@ import {
     useToast,
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
-import { baseUrl } from "../backendBaseUrl";
 import { useNavigate } from "react-router-dom";
 
 export default function SimpleCard() {
@@ -36,7 +36,7 @@ export default function SimpleCard() {
                 description: "You have already logged in",
                 status: "info",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             history("/")
@@ -65,7 +65,7 @@ export default function SimpleCard() {
                 description: "User logged in successfully",
                 status: "success",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             let data = await response.json();
@@ -80,7 +80,7 @@ export default function SimpleCard() {
                 description: "User doesn't exists",
                 status: "error",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             return;
@@ -91,7 +91,7 @@ export default function SimpleCard() {
                 description: "Some error occurred",
                 status: "error",
                 position: "bottom-left",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             return;

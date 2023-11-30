@@ -1,4 +1,4 @@
-import Dropdown from "../../justComponents/Dropdown";
+import Dropdown from '../justComponents/Dropdown';
 import photo from "../../assets/photo.png";
 import { TypeAnimation } from 'react-type-animation';
 
@@ -14,9 +14,8 @@ function Homepage() {
                 <h1 className="text-3xl font-bold text-gray-800 mt-4">
                     <TypeAnimation
                         sequence={[
-                            // Same substring at the start will only be typed out once, initially
                             "Sahith...",
-                            1000, // wait 1s before replacing "Mice" with "Hamsters"
+                            1000,
                             "Student",
                             1000,
                         ]}

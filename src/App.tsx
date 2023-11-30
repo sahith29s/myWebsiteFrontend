@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom"
 import Contact from "./components/pages/Contact"
-import Navbar from "./justComponents/Navbar"
+import Navbar from "./components/justComponents/Navbar"
 import Homepage from "./components/pages/Homepage"
-import Footer from "./justComponents/Footer"
+import Footer from "./components/justComponents/Footer"
 import AboutUs from "./components/pages/About"
 import Chat from "./components/pages/Chat"
 import Pagenotfound from "./components/pages/Pagenotfound"
-import Signup from "./auth/Signup"
-import Login from "./auth/Login"
+import Signup from "./components/auth/Signup"
+import Login from "./components/auth/Login"
+import TicTacToe from "./components/pages/TicTacToe"
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/tictactoe" element={<TicTacToe />} />
       </Routes>
       <Footer />
 

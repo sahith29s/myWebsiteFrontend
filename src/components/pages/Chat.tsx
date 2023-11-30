@@ -1,10 +1,8 @@
 import { io } from "socket.io-client"
 import { useEffect, useState } from 'react';
-import PopupForName from '../PopupForName';
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
-// const socket = io("http://localhost:3000");
 const socket = io("https://hakur.onrender.com/");
 
 type messageInterface = {
@@ -29,7 +27,7 @@ const Chat = () => {
         description: "Login first to access chat",
         status: "success",
         position: "bottom-left",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
       })
       history("/login");
@@ -64,11 +62,6 @@ const Chat = () => {
 
   return (
     <>
-      {!name &&
-        <>
-          <PopupForName setName={setName} />
-        </>
-      }
       {
         name &&
         <>
