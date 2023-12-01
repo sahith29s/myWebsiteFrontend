@@ -63,7 +63,6 @@ const Signup = () => {
 
     const handleToSetImage = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = (e.target as HTMLInputElement).files;
-        // files && console.log(files[0].type);
         if (files && files[0].type != "image/jpeg" && files[0].type != "image/png") {
             toast({
                 title: "photo",

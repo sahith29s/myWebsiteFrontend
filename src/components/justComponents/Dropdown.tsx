@@ -1,5 +1,3 @@
-// src/components/Dropdown.tsx
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 

@@ -1,12 +1,3 @@
-// /** @type {import('tailwindcss').Config} */
-// export default,c {
-//   content: [],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// }
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [

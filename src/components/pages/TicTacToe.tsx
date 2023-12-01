@@ -8,7 +8,6 @@ const TicTacToe = () => {
     const [isWin, setIsWin] = useState<{ isWin: boolean, whoWin: string }>({ isWin: false, whoWin: "" });
     const [howManyTimesWin, setHowManyTimesWin] = useState<{ cross: number, zero: number }>({ cross: 0, zero: 0 });
 
-
     const winArray =
         [
             [0, 1, 2],
@@ -43,7 +42,6 @@ const TicTacToe = () => {
             }
         }
     };
-
 
     const handleClick = (num: number) => {
         let array = [...ticOrToe];

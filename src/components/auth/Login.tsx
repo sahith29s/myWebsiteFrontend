@@ -98,12 +98,6 @@ export default function SimpleCard() {
         }
     };
 
-    // let response = await fetch((baseUrl + "api/user/register"), {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json", },
-    //     body: JSON.stringify(formData),
-    // });
-
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>
     ) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
