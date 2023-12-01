@@ -4,16 +4,19 @@ import Navbar from "./components/justComponents/Navbar"
 import Homepage from "./components/pages/Homepage"
 import Footer from "./components/justComponents/Footer"
 import AboutUs from "./components/pages/About"
-import Chat from "./components/pages/Chat"
+import Chat from "./components/pages/Chat/Chat"
 import Pagenotfound from "./components/pages/Pagenotfound"
 import Signup from "./components/auth/Signup"
 import Login from "./components/auth/Login"
-import TicTacToe from "./components/pages/TicTacToe"
+import TicTacToe from "./components/pages/TicTacToe/TicTacToe"
+import AmazonCloHomepage from "./components/pages/AmazonClone/AmazonCloHomepage"
 
 const App = () => {
   return (
     <>
       <div className="bg-red-700 flex items-center text-center text-white font-xl h-9 justify-center">Website under construction</div>
+
+
       <Navbar />
       <Routes>
         <Route path="/contact" element={<Contact />} />
@@ -24,7 +27,10 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/tictactoe" element={<TicTacToe />} />
+        <Route path="/amazonclone" element={<AmazonCloHomepage />} />
+        
       </Routes>
+
       <Footer />
 
 
