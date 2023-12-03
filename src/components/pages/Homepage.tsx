@@ -1,8 +1,14 @@
 import Dropdown from '../justComponents/Dropdown';
 import photo from "../../assets/photo.png";
 import { TypeAnimation } from 'react-type-animation';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../reduxToolkit/Store';
+import { increment } from '../../reduxToolkit/features/counterSlice';
 
 function Homepage() {
+    const count = useSelector((state: RootState) => state.counter.value);
+    const dispatch = useDispatch();
+    console.log(count);
     return (
         <div className="items-center mb-5 sm:min-h-[100vh] sm:flex justify-around text-center">
             <div className="flex flex-col items-center mb-6">
@@ -11,7 +17,7 @@ function Homepage() {
                     src={photo}
                     alt="Profile"
                 />
-                <h1 className="text-3xl font-bold text-gray-800 mt-4">
+                <h1 onClick={() => dispatch(increment())} className="select-none text-3xl font-bold text-gray-800 mt-4">
                     <TypeAnimation
                         sequence={[
                             "Sahith...",
