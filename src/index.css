@@ -33,19 +33,3 @@
 .ticTacToeBox {
     @apply flex items-center justify-center text-[200%] font-amita order-[.001rem] w-[10vw] h-[10vw] cursor-pointer rounded-[.8rem] sm:rounded-[1.5rem] border-purple-500
 }
-
-/* .borderLeft {
-    @apply border-l-[.001rem]
-}
-
-.borderBottom {
-    @apply border-b-[.001rem]
-}
-
-.borderRight {
-    @apply border-r-[.001rem]
-}
-
-.borderTop {
-    @apply border-t-[.001rem]
-} */
