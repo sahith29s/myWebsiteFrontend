@@ -10,6 +10,7 @@ import Signup from "./components/auth/Signup"
 import Login from "./components/auth/Login"
 import TicTacToe from "./components/pages/TicTacToe/TicTacToe"
 import AmazonCloHomepage from "./components/pages/AmazonClone/AmazonCloHomepage"
+import Calculator from "./components/pages/Calculator/Calculator"
 
 const App = () => {
   return (
@@ -28,7 +29,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/tictactoe" element={<TicTacToe />} />
         <Route path="/amazonclone" element={<AmazonCloHomepage />} />
-        
+        <Route path="/calculator" element={<Calculator/>} />
+
       </Routes>
 
       <Footer />

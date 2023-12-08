@@ -48,11 +48,17 @@ const Dropdown: React.FC = () => {
                             Tic Tac Toe
                         </Link>
                         <Link
+                            to="/calculator"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                            Calculator
+                        </Link>
+                        {/* <Link
                             to="/option3"
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                             Option 3
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             )}
