@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Dropdown: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -53,12 +53,6 @@ const Dropdown: React.FC = () => {
                         >
                             Calculator
                         </Link>
-                        {/* <Link
-                            to="/option3"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                            Option 3
-                        </Link> */}
                     </div>
                 </div>
             )}

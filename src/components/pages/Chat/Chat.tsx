@@ -1,7 +1,7 @@
 import { io } from "socket.io-client"
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+import { Avatar, Wrap, WrapItem, useToast } from "@chakra-ui/react";
 
 const socket = io("https://hakur.onrender.com/");
 
@@ -20,6 +20,7 @@ const Chat = () => {
   useEffect(() => {
     if (localStorage.getItem("formData")) {
       setName(JSON.parse(localStorage.getItem("formData") as string)[0].username);
+      setProfilePicture(JSON.parse(localStorage.getItem("formData") as string)[0].profile);
     }
     else {
       toast({
@@ -36,10 +37,10 @@ const Chat = () => {
   }, [])
 
   const [name, setName] = useState<string>("");
+  const [profilePicture, setProfilePicture] = useState<string>("");
   const [oneMessage, setOneMessage] = useState<string>("");
 
   useEffect((): void => {
-
     socket.on("messageBackFromServer", (messObj) => {
       setMessages((prevMess) => [...prevMess, messObj])
     })
@@ -59,7 +60,6 @@ const Chat = () => {
     return;
   };
 
-
   return (
     <>
       {
@@ -69,6 +69,11 @@ const Chat = () => {
             <span className="text-sm relative top-3">still under construction
               <span className="mx-2 font-serif">{name}</span>
             </span>
+            <Wrap className="relative left-[34%]">
+              <WrapItem>
+                <Avatar name='Dan Abrahmov' src={profilePicture} />
+              </WrapItem>
+            </Wrap>
           </div>
 
           <main className="sm:h-[73vh] h-[45vh] container mx-auto py-5">
