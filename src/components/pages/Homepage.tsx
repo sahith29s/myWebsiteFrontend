@@ -1,5 +1,5 @@
 import Dropdown from '../justComponents/Dropdown';
-import photo from "../../assets/photo.png";
+import student from "../../assets/student.png";
 import { TypeAnimation } from 'react-type-animation';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../reduxToolkit/Store';
@@ -13,8 +13,8 @@ function Homepage() {
         <div className="items-center mb-5 sm:min-h-[100vh] sm:flex justify-around text-center">
             <div className="flex flex-col items-center mb-6">
                 <img
-                    className="sm:h-[27rem] h-[10rem] rounded-[50rem] mb-5"
-                    src={photo}
+                    className="sm:h-[27rem] h-[10rem] rounded-[0rem] mb-5"
+                    src={student}
                     alt="Profile"
                 />
                 <h1 onClick={() => dispatch(increment())} className="select-none text-3xl font-bold text-gray-800 mt-4">
