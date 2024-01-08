@@ -27,7 +27,6 @@ const Signup = () => {
         return pattern.test(email);
     }
 
-
     useEffect(() => {
         if (localStorage.getItem("isSignup")) {
             history("/login")
